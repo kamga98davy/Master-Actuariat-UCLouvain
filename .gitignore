@@ -1,0 +1,198 @@
+# =========================================================================
+#  .gitignore — Projets Master en Sciences Actuarielles (UCLouvain)
+#  Auteur : KAMGA BOPDA Davy Romaric
+# =========================================================================
+
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environnements virtuels
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# =====================
+# Jupyter / IPython / Colab
+# =====================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+.jupyter/
+
+# =====================
+# R / RStudio
+# =====================
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+*-Ex.R
+*.utf8.md
+*.knit.md
+*_cache/
+/cache/
+*.rdb
+*.rdx
+.Renviron
+
+# =====================
+# LaTeX
+# =====================
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.dvi
+*.xdv
+*-converted-to.*
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.pdfsync
+*.nav
+*.snm
+*.vrb
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.pygtex
+*.pygstyle
+
+# Ne PAS ignorer les PDFs finaux (rapports/mémoire)
+!Rapport_*.pdf
+!Memoire_*.pdf
+!Presentation_*.pdf
+
+# =====================
+# Excel / MS Office - Fichiers temporaires
+# =====================
+~$*.xlsx
+~$*.xls
+~$*.xlsm
+~$*.docx
+~$*.doc
+~$*.pptx
+~$*.ppt
+*.xlk
+*.tmp
+
+# Log macros VBA
+*.xlsm.bak
+
+# =====================
+# IDE / Éditeurs
+# =====================
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+.spyproject/
+.spyderproject
+.ropeproject/
+
+# =====================
+# OS
+# =====================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# =====================
+# Données lourdes / Modèles ML / Checkpoints
+# =====================
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.ckpt
+*.pt
+*.pth
+*.pb
+*.tflite
+*.onnx
+*.model
+mlruns/
+wandb/
+tensorboard/
+logs/
+runs/
+
+# =====================
+# Fichiers spécifiques au projet UCL
+# =====================
+*.xlsm~
+sample_data/
+
+# =====================
+# Secrets / Configurations sensibles
+# =====================
+.env.local
+.env.*.local
+secrets.yaml
+credentials.json
+*.key
+*.pem
+config.private.*
