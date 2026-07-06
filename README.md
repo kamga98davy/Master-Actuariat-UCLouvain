@@ -337,7 +337,7 @@ Les fichiers `.xlsm` (macros) sont ouvrables avec **Microsoft Excel 2016 ou ult�
 **KAMGA BOPDA Davy Romaric**
 Étudiant en Master en Sciences Actuarielles — UCLouvain (ISBA)
 📧 kamgabopda@gmail.com
-🔗 [GitHub — @KAMGAdavyromaric](https://github.com/KAMGAdavyromaric)
+🔗 [GitHub — @kamga98davy](https://github.com/kamga98davy)
 
 ---
 
