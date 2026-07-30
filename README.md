@@ -1,344 +1,304 @@
 # Master en Sciences Actuarielles — UCLouvain
 
-<p align="center">
-  <img src="https://img.shields.io/badge/UCLouvain-Master%20Actuariat-1e3a8a?style=flat-square" alt="UCLouvain"/>
-  <img src="https://img.shields.io/badge/Année-2024--2026-6b7280?style=flat-square" alt="Année"/>
-  <img src="https://img.shields.io/badge/Langages-Python%20%7C%20R%20%7C%20SAS%20%7C%20VBA-2563eb?style=flat-square" alt="Langages"/>
-  <img src="https://img.shields.io/badge/Domaines-Assurance%20Vie%20%7C%20Non--Vie%20%7C%20Finance%20%7C%20ML-16a34a?style=flat-square" alt="Domaines"/>
-</p>
+**KAMGA BOPDA Davy Romaric** · Institut de Statistique, Biostatistique et Sciences Actuarielles (ISBA) · Promotion 2024-2026
 
-> **Portfolio académique de KAMGA BOPDA Davy Romaric**, étudiant en Master en Sciences Actuarielles à l'Institut de Statistique, Biostatistique et Sciences Actuarielles (ISBA) de l'UCLouvain, sous la Faculté des Sciences et la Louvain School of Management. Ce dépôt regroupe les projets réalisés en Master 1 et Master 2, allant de la modélisation de portefeuille en assurance-vie à la tarification d'obligations catastrophes en passant par le deep learning appliqué à l'assurance non-vie.
+Ce dépôt rassemble dix projets menés pendant le Master en Sciences Actuarielles (ACTU2M) de l'UCLouvain, du mémoire sur la titrisation du risque de mortalité à la tarification de traités de réassurance. Chaque dossier contient le rapport, le code et un README propre.
+
+L'objectif de ce portfolio n'est pas de montrer que j'ai suivi des cours. C'est de montrer que chacun de ces travaux répond à une question qu'une compagnie d'assurance, un réassureur ou une direction des risques se pose réellement. Chaque projet est donc présenté avec la problématique métier qu'il permet de traiter.
 
 ---
 
-## Table des matières
+## Sommaire
 
-- [À propos](#à-propos)
-- [Compétences mobilisées](#compétences-mobilisées)
+- [Ce que chaque projet permet de résoudre](#ce-que-chaque-projet-permet-de-résoudre)
+- [Compétences techniques](#compétences-techniques)
 - [Structure du dépôt](#structure-du-dépôt)
-- [🎓 Mémoire de Master — Obligations catastrophes (CAT Bonds)](#-mémoire-de-master--obligations-catastrophes-cat-bonds)
-- [Projets Master 1 et Master 2](#projets-master-1-et-master-2)
-  - [1. ALM — Asset & Liability Management](#1-alm--asset--liability-management)
-  - [2. Deep Learning for Insurance and Finance](#2-deep-learning-for-insurance-and-finance)
-  - [3. Big Data in Finance](#3-big-data-in-finance)
-  - [4. Statistical Learning Methods for Insurance](#4-statistical-learning-methods-for-insurance)
-  - [5. Data Mining](#5-data-mining)
-  - [6. Financial Valuation of Actuarial Liabilities](#6-financial-valuation-of-actuarial-liabilities)
-  - [7. Réassurance et échange de risques](#7-réassurance-et-échange-de-risques)
-  - [8. Actuarial Finance : Advanced Processes and Life Insurance Engineering](#8-actuarial-finance--advanced-processes-and-life-insurance-engineering)
-  - [9. Quantitative Risk Management (QRM)](#9-quantitative-risk-management-qrm)
+- [Mémoire de Master : obligations catastrophes liées à la mortalité](#mémoire-de-master--obligations-catastrophes-liées-à-la-mortalité)
+- [Projets de Master 1 et Master 2](#projets-de-master-1-et-master-2)
 - [Reproductibilité](#reproductibilité)
 - [Contact](#contact)
 
 ---
 
-## À propos
+## Ce que chaque projet permet de résoudre
 
-Ce dépôt centralise les livrables des projets académiques réalisés au sein du **Master en Sciences Actuarielles (ACTU2M)** de l'UCLouvain durant les années 2024-2025 et 2025-2026. Chaque projet est structuré de manière autonome et contient :
+| Projet | Problématique d'entreprise traitée | Fonction concernée |
+|---|---|---|
+| [Mémoire : CAT bonds mortalité](#mémoire-de-master--obligations-catastrophes-liées-à-la-mortalité) | Transférer un risque de mortalité extrême aux marchés financiers et savoir de combien le prix bouge si l'on cesse de supposer mortalité et taux indépendants | Réassurance vie, ILS, ORSA |
+| [ALM](#1-alm-gestion-actif-passif-dun-assureur-vie) | Quantifier la perte de fonds propres d'un assureur vie quand les taux bougent, et construire la couverture | ALM, risque marché, Solvabilité II |
+| [Deep Learning](#2-deep-learning-appliqué-à-lassurance-et-à-la-finance) | Savoir si un réseau de neurones justifie sa perte de lisibilité face à un GLM sur la tarification auto | Tarification non-vie, data science |
+| [Big Data en finance](#3-big-data-in-finance-allocation-dactifs-en-grande-dimension) | Construire un portefeuille stable quand la matrice de covariance est mal conditionnée | Gestion d'actifs, allocation stratégique |
+| [Statistical Learning](#4-statistical-learning-propension-à-souscrire-une-assurance-voyage) | Prédire quels clients souscriront une garantie, pour cibler une campagne | Marketing produit, souscription |
+| [Data Mining](#5-data-mining-prédiction-de-la-survenance-dun-sinistre-auto) | Identifier les variables qui prédisent réellement la survenance d'un sinistre auto | Tarification, sélection des risques |
+| [Valorisation financière des passifs](#6-financial-valuation-of-actuarial-liabilities) | Calculer un Best Estimate conforme au pilier 1 et chiffrer une option embarquée | Provisionnement, développement produit |
+| [Réassurance](#7-réassurance-et-échange-de-risques) | Tarifer une couche XL et juger si la prime demandée par le réassureur est raisonnable | Réassurance, souscription non-vie |
+| [Finance actuarielle et processus de Lévy](#8-actuarial-finance-processus-de-lévy-et-ingénierie-de-lassurance-vie) | Remplacer l'hypothèse gaussienne par un modèle qui reproduit les queues épaisses observées | Capital économique, pricing de garanties |
+| [Quantitative Risk Management](#9-quantitative-risk-management) | Backtester une VaR et modéliser la dépendance extrême entre actifs | Risk management, modèle interne |
 
-- **Le rapport final** au format PDF (avec les développements mathématiques et l'interprétation des résultats).
-- **Le code source** (Python, R, VBA/Excel selon le contexte).
-- **Les données** ou fichiers de travail lorsqu'ils accompagnent le rapport.
-- **Un README dédié** décrivant les objectifs, la méthodologie et les résultats du projet.
+---
 
-L'ensemble reflète une progression thématique : des fondations en assurance-vie et finance stochastique (M1) vers des applications avancées en machine learning, gestion actif-passif et titrisation des risques (M2), culminant avec un mémoire sur la **tarification des obligations catastrophes liées à la mortalité**.
+## Compétences techniques
 
-## Compétences mobilisées
+**Probabilités et processus stochastiques.** Calcul d'Itô, semi-martingales, changement de mesure (Girsanov, mesures martingales équivalentes), diffusions affines avec sauts, processus de Lévy (NIG, jump-diffusion), modèles de taux (Hull-White G1++, Vasicek, Svensson), modèles de mortalité (Lee-Carter, Age-Period-Cohort, sauts corrélés).
 
-**Mathématiques & Statistiques.** Processus stochastiques (Brownien, Lévy, sauts, diffusion affine), calcul d'Itô, changement de mesure (Girsanov, mesures martingales), modèles de taux (Hull-White G1++, Vasicek, Svensson, bootstrapping de courbe zéro-coupon), modèles de mortalité (Lee-Carter, Age-Period-Cohort, sauts corrélés), inférence statistique, MLE et méthode des moments, GARCH, POT (Peak Over Threshold), copules.
+**Statistique et économétrie.** Maximum de vraisemblance, méthode des moments, inférence et tests de spécification, GARCH univarié et multivarié (BEKK), théorie des valeurs extrêmes (Peak Over Threshold), copules et dépendance de queue.
 
-**Machine Learning & Deep Learning.** Régression logistique et linéaire, GLM Poisson/binomial, arbres (CART, Random Forest, Gradient Boosting, XGBoost), Auto-Encodeurs (AE), Auto-Encodeurs Variationnels (VAE), MLP profonds, régularisation ℓ₁/ℓ₂, cross-validation, PDP/ICE pour l'interprétation, embedding de variables catégorielles.
+**Machine learning.** GLM Poisson et binomial, régression logistique, CART, Random Forest, Gradient Boosting, XGBoost, réseaux de neurones profonds, auto-encodeurs et auto-encodeurs variationnels, régularisation ℓ1 et ℓ2, validation croisée temporelle, interprétabilité par PDP et ICE.
 
-**Actuariat.** Best Estimate, duration, convexité, matching de duration et gap ALM, provisions techniques (mathématiques et participation aux bénéfices), tarification par méthodes actuarielles et financières (arbre binomial, Monte-Carlo, formule fermée), pricing d'options embarquées (GMIB, rentes variables), réassurance (Burning Cost, Poisson-Pareto, XL/Stop-Loss), tarification en assurance non-vie (fréquence-sévérité).
+**Actuariat.** Best Estimate, duration et convexité, gap ALM, provisions techniques et participation aux bénéfices, pricing d'options embarquées (GMIB, variable annuities), réassurance (burning cost, Poisson-Pareto, XL et stop-loss), tarification fréquence-sévérité, VaR et Expected Shortfall.
 
-**Programmation.** Python (NumPy, pandas, scikit-learn, TensorFlow/Keras, statsmodels, SciPy), R (rugarch, fGarch, xts, tseries, ggplot2, tidymodels), SAS (base et macros), Excel/VBA (macros de simulation ALM), LaTeX (rédaction scientifique).
+**Outils.** Python (NumPy, pandas, scikit-learn, TensorFlow et Keras, statsmodels, SciPy), R (rugarch, fGarch, BEKKs, copula, xts, tidyverse), SAS (base et macros), Excel et VBA, LaTeX.
+
+---
 
 ## Structure du dépôt
 
 ```
 Master-Actuariat-UCLouvain/
-│
-├── 01-Memoire-CAT-Bonds/                          # 🎓 Mémoire de Master 2 (58 pages)
-│
-├── 02-ALM-Asset-Liability-Management/             # Gestion actif-passif d'un assureur vie
-│   ├── code/       (Python — partie stochastique)
-│   └── data/       (Excel/VBA — partie déterministe)
-│
-├── 03-Deep-Learning-Insurance-Finance/            # GLM + AE/VAE sur 87k contrats auto
-│   └── code/       (Jupyter Colab, TensorFlow 2.20)
-│
-├── 04-Big-Data-Finance/                           # Optimisation de portefeuille MSR / MinVar
-│   └── code/       (Jupyter — pandas_datareader)
-│
-├── 05-Statistical-Learning-Insurance/             # Classification — souscription assurance voyage
-│   └── code/       (RMarkdown HTML avec code embarqué)
-│
-├── 06-Data-Mining/                                # Prédiction de sinistres auto
-│   └── code/       (SAS / R selon disponibilité)
-│
-├── 07-Financial-Valuation-Actuarial-Liabilities/  # Best Estimate + pricing produit variable
-│   └── code/       (Jupyter — 3 méthodes de pricing)
-│
-├── 08-Reassurance/                                # Burning Cost et modèle Poisson-Pareto
-│   └── data/       (Excel — analyse de sinistres)
-│
-├── 09-Actuarial-Finance-Levy/                     # Processus de Lévy + GMIB
-│
-├── 10-QRM-Quantitative-Risk-Management/           # GARCH sur actions
-│   └── code/       (R — rugarch, fGarch)
-│
+├── 01-Memoire-CAT-Bonds/                          Mémoire de Master 2 (58 pages)
+├── 02-ALM-Asset-Liability-Management/             Gestion actif-passif d'un assureur vie
+│   ├── code/                                      Python, partie stochastique
+│   └── data/                                      Excel et VBA, partie déterministe
+├── 03-Deep-Learning-Insurance-Finance/            GLM et réseaux profonds sur 87k contrats
+│   └── code/                                      Jupyter, TensorFlow 2.20
+├── 04-Big-Data-Finance/                           Allocation MSR, MinVar et régularisation
+│   └── code/                                      Jupyter
+├── 05-Statistical-Learning-Insurance/             Classification, souscription assurance voyage
+│   └── code/                                      RMarkdown
+├── 06-Data-Mining/                                Prédiction de sinistres auto
+│   └── code/                                      SAS et R
+├── 07-Financial-Valuation-Actuarial-Liabilities/  Best Estimate et pricing d'une VA
+│   └── code/                                      Jupyter, trois méthodes de pricing
+├── 08-Reassurance/                                Burning cost et modèle Poisson-Pareto
+│   └── data/                                      Excel
+├── 09-Actuarial-Finance-Levy/                     Processus de Lévy et GMIB
+├── 10-QRM-Quantitative-Risk-Management/           GARCH, BEKK et copules
+│   └── code/                                      R, deux projets
 ├── .gitignore
 └── README.md
 ```
 
 ---
 
-## 🎓 Mémoire de Master — Obligations catastrophes (CAT Bonds)
+## Mémoire de Master : obligations catastrophes liées à la mortalité
 
-> **Tarification d'obligations catastrophes liées à la mortalité avec sauts corrélés entre mortalité et taux d'intérêt.**
-> *Auteur :* KAMGA BOPDA Davy Romaric — *Promoteur :* Karim Barigou — *Année académique :* 2025-2026 — *Master en Sciences Actuarielles ACTU2M*
+> **Tarification d'obligations catastrophes liées à la mortalité avec sauts corrélés entre mortalité et taux d'intérêt**
+> Promoteur : Karim Barigou · Année académique 2025-2026
 
-📄 [Lire le mémoire (PDF, 58 pages)](./01-Memoire-CAT-Bonds/Memoire_KAMGA_BOPDA_Davy_Romaric.pdf)
+[Lire le mémoire (PDF, 58 pages)](./01-Memoire-CAT-Bonds/Memoire_KAMGA_BOPDA_Davy_Romaric.pdf)
 
-### Contexte et enjeu
+### Valeur en entreprise
 
-La pandémie de COVID-19 a produit un **choc de mortalité d'une ampleur inédite** : environ **14,8 millions de décès supplémentaires entre janvier 2020 et décembre 2021** selon l'OMS (Msemburi et al., 2022). En Belgique, le P-score a atteint un pic de **17,5 %** en 2020, soit près de **29 000 décès excédentaires sur 2020-2022**, essentiellement concentrés sur la tranche des plus de 65 ans. Ce choc a mis à l'épreuve la solidité des portefeuilles d'assurance-vie et a fait émerger un besoin urgent en **capital contingent**.
+Un assureur vie qui a vécu 2020 sait ce que coûte un choc de mortalité. La question qui suit est de savoir comment s'en protéger sans immobiliser du capital, et à quel prix.
 
-Les **obligations catastrophes (CAT bonds) liées à la mortalité** — dont l'exemple emblématique est le *pandemic bond* de la Banque mondiale, déclenché durant la COVID-19 et ayant mobilisé **133 M USD** — constituent un mécanisme de titrisation permettant de transférer le risque de mortalité extrême aux marchés financiers.
+Ce mémoire outille trois décisions. Pour une cédante : dimensionner un transfert de risque pandémique vers les marchés, en alternative ou en complément d'un traité de réassurance. Pour un investisseur en ILS : valoriser un titre CAT mortalité en portefeuille. Pour une équipe ORSA : construire un scénario pandémique qui ne suppose pas que les taux restent sagement où ils sont pendant que la mortalité explose.
+
+Le résultat central est un avertissement de méthode. Le pricing standard suppose l'indépendance entre risque de mortalité et taux d'intérêt. Cette hypothèse est fausse en crise sanitaire, et elle est fausse dans le sens qui arrange le vendeur : elle sous-estime systématiquement la prime de risque exigible.
+
+### Contexte
+
+Le COVID-19 a produit environ **14,8 millions de décès excédentaires entre janvier 2020 et décembre 2021** (Msemburi et al., 2022, *Nature*). En Belgique, le P-score a culminé à **17,5 %** en 2020, pour près de **29 000 décès excédentaires sur 2020-2022**, concentrés sur les plus de 65 ans.
+
+Les obligations catastrophes liées à la mortalité titrisent ce risque. Le *pandemic bond* de la Banque mondiale, déclenché pendant la pandémie, a mobilisé **133 millions USD**.
 
 ### Problématique
 
-Le pricing traditionnel des CAT bonds repose sur une **hypothèse d'indépendance entre le risque de mortalité et les taux d'intérêt**. Or les crises sanitaires majeures modifient simultanément :
+Une crise sanitaire majeure déplace simultanément la probabilité de déclenchement de l'obligation et toute la structure des taux, par le jeu des interventions monétaires et de la fuite vers la qualité. Cette corrélation crée un effet d'amplification qu'un pricing sous hypothèse d'indépendance ne voit pas.
 
-- **La probabilité de déclenchement** de l'obligation (via un choc de mortalité extrême) ;
-- **Toute la structure des taux d'intérêt** (interventions de politique monétaire, fuite vers la qualité, ajustements de la prime de risque).
+> Comment modéliser et tarifer une obligation catastrophe liée à la mortalité en tenant compte de la dépendance dynamique entre chocs de mortalité extrême et variations de taux, et quel impact cette dépendance exerce-t-elle sur la prime de risque exigée par les investisseurs ?
 
-Cette **corrélation entre choc de mortalité et taux** crée un effet d'amplification qu'une tarification supposant l'indépendance sous-estime systématiquement. La question centrale du mémoire :
+### Approche
 
-> *Comment modéliser et tarifer une obligation catastrophe liée à la mortalité en tenant compte de la dépendance dynamique entre les chocs de mortalité extrême et les variations des taux d'intérêt, et quel impact cette dépendance exerce-t-elle sur la prime de risque exigée par les investisseurs ?*
+Un modèle affine bivarié à sauts corrélés, dans la lignée de Li et al. (2023) et Xu et al., qui modélise conjointement le taux court r_t et l'intensité de mortalité μ_t avec des sauts communs. La tarification se fait sous mesure risque-neutre par méthode semi-analytique et transformée de Fourier.
 
-### Contribution méthodologique
+L'étude empirique porte sur des données belges couvrant la fenêtre pandémique : calibration historique sous P, calibration au marché sous Q pour extraire les primes de risque, puis analyse de sensibilité du prix P₀.
 
-Le mémoire propose un **modèle affine à sauts corrélés** intégrant explicitement cette dépendance, en s'inspirant des travaux récents de **Li et al. (2023)** et **Xu et al.**. Le cadre méthodologique s'articule autour :
-
-1. **Fondements mathématiques des processus stochastiques** — Diffusions affines avec composante à sauts (Jump-Diffusion), théorie des semi-martingales, changement de mesure (P → Q).
-2. **Modèle bivarié affine à diffusion avec sauts** — Modélisation conjointe du taux d'intérêt court r_t et de l'intensité de mortalité μ_t, avec des chocs communs (sauts corrélés) permettant de capter la dépendance dans la queue des distributions.
-3. **Tarification** — Formule de pricing sous mesure risque-neutre Q, avec calcul du prix P₀ de l'obligation à mortalité par transformée de Fourier / méthode semi-analytique.
-
-### Étude empirique : cas de la Belgique
-
-- **Données** — Séries de mortalité et courbes de taux belges couvrant la période récente (incluant la fenêtre pandémique 2020-2022).
-- **Calibration sous P** — Estimation historique des paramètres du modèle bivarié (drift, volatilité, intensité et taille des sauts corrélés).
-- **Calibration sous Q** — Ajustement au marché des obligations et des instruments dérivés pour extraire les primes de risque de mortalité et de taux.
-- **Analyse de sensibilité** — Impact des primes de risque sur le prix P₀ de la CAT bond.
-
-### Structure du mémoire
+### Structure
 
 | Chapitre | Contenu | Pages |
 |---|---|---|
-| **1. Cadre théorique** | CAT bonds, hypothèse d'indépendance (traditionnelle et remise en cause), revue sur la dynamique de la mortalité | 3-20 |
-| **2. Cadre méthodologique** | Fondements des processus stochastiques, spécification du modèle bivarié affine à diffusion avec sauts, tarification | 21-30 |
-| **3. Étude empirique** | Analyse descriptive des données belges, calibration sous P et Q, analyse de sensibilité du prix P₀ aux primes de risque | 31-43 |
-| **Conclusion** | | 44 |
-| **Annexes A** | Preuves relatives aux changements de mesure et martingales, dynamique du modèle, graphiques et diagnostics | i-vi |
+| 1. Cadre théorique | CAT bonds, remise en cause de l'hypothèse d'indépendance, dynamique de la mortalité | 3-20 |
+| 2. Cadre méthodologique | Processus stochastiques, modèle bivarié affine à sauts, tarification | 21-30 |
+| 3. Étude empirique | Données belges, calibration sous P et Q, sensibilité du prix aux primes de risque | 31-43 |
+| Conclusion | | 44 |
+| Annexe A | Preuves des changements de mesure, dynamique du modèle, diagnostics | i-vi |
 
-### Références clés
+### Références principales
 
 - Li, J. et al. (2023). *Pricing mortality-linked CAT bonds*.
-- Xu et al. — Affine mortality models with jumps.
-- Msemburi, W. et al. (2022). *The WHO estimates of excess mortality associated with the COVID-19 pandemic*. **Nature**.
-- Duffie, D., Pan, J., & Singleton, K. (2000). *Transform Analysis and Asset Pricing for Affine Jump-Diffusions*. **Econometrica**.
+- Xu et al. *Affine mortality models with jumps*.
+- Msemburi, W. et al. (2022). *The WHO estimates of excess mortality associated with the COVID-19 pandemic*. Nature.
+- Duffie, D., Pan, J. et Singleton, K. (2000). *Transform Analysis and Asset Pricing for Affine Jump-Diffusions*. Econometrica.
 
 ---
 
-## Projets Master 1 et Master 2
+## Projets de Master 1 et Master 2
 
-### 1. ALM — Asset & Liability Management
+### 1. ALM, gestion actif-passif d'un assureur vie
 
-📁 [`02-ALM-Asset-Liability-Management/`](./02-ALM-Asset-Liability-Management/)  · *Cours : ALM — Prof. Jérôme Barbarin* · *Équipe : Diendéré Wend K.O., Kamga Bopda D.R., Zitan L.*
+[`02-ALM-Asset-Liability-Management/`](./02-ALM-Asset-Liability-Management/)
+*Cours ALM, Prof. Jérôme Barbarin · Équipe : Diendéré Wend K.O., Kamga Bopda D.R., Zitan L.*
 
-**Question de fond.** *« Lorsque les taux bougent, qu'arrive-t-il aux fonds propres d'un assureur-vie ? »*
+**Valeur en entreprise.** Les passifs d'un assureur vie sont structurellement plus longs que ses actifs. Une variation de taux ne touche donc pas les deux côtés du bilan de la même façon, et l'écart se paie en fonds propres. Ce projet mesure ce gap de duration, construit la couverture par swap à départ différé, puis simule la distribution complète du résultat pour en extraire VaR et Expected Shortfall.
 
-**Partie I — Modèle déterministe** (Excel/VBA)
-- **Bootstrapping de la courbe zéro-coupon** à partir des obligations de marché.
-- **Valorisation des provisions techniques** (approche flux + actualisation).
-- **Analyse du gap de duration** actif-passif — mise en évidence de l'asymétrie structurelle : *les passifs sont notablement plus longs que les actifs*.
-- **Couverture par swap à départ différé** pour aligner les sensibilités.
+C'est le travail courant d'une équipe ALM, et la matière première du module de risque de taux du SCR sous Solvabilité II. La modélisation de la participation aux bénéfices comme option embarquée est le point qui distingue un vrai modèle ALM vie d'un simple appariement de flux.
 
-**Partie II — Modèle stochastique** (Python, notebook)
-- **Modèle Hull-White G1++** calibré aux caps/swaptions.
-- **Simulations Monte-Carlo** de trajectoires de taux sous mesure risque-neutre.
-- **Participation aux bénéfices** modélisée comme option embarquée dans les provisions.
-- **Reconstitution de la distribution du P&L** sous mesure historique — calcul de VaR, Expected Shortfall.
-- **Deux variantes** : avec option de rachat des assurés / sans rachat (fichiers séparés `ALM_avec_rachat.xlsm` et `ALM_sans_rachat.xlsm`).
+**Partie I, modèle déterministe (Excel et VBA).** Bootstrapping de la courbe zéro-coupon à partir des obligations de marché, valorisation des provisions techniques par actualisation des flux, analyse du gap de duration actif-passif, couverture par swap à départ différé.
 
-### 2. Deep Learning for Insurance and Finance
+**Partie II, modèle stochastique (Python).** Modèle Hull-White G1++ calibré sur caps et swaptions, simulations Monte-Carlo sous mesure risque-neutre, participation aux bénéfices traitée comme option embarquée, reconstitution de la distribution du P&L sous mesure historique. Deux variantes selon que l'option de rachat des assurés est activée ou non (`ALM_avec_rachat.xlsm` et `ALM_sans_rachat.xlsm`).
 
-📁 [`03-Deep-Learning-Insurance-Finance/`](./03-Deep-Learning-Insurance-Finance/) · *Cours LDATS2310 — Prof. Donatien Hainaut* · *Projet individuel*
+### 2. Deep Learning appliqué à l'assurance et à la finance
 
-**Données.** 87 228 contrats d'assurance flotte automobile décrits par 22 variables contractuelles, géographiques et comportementales.
+[`03-Deep-Learning-Insurance-Finance/`](./03-Deep-Learning-Insurance-Finance/)
+*Cours LDATS2310, Prof. Donatien Hainaut · Projet individuel*
 
-**Objectif.** Prédire la **fréquence de sinistres** *f_i = N_i / ν_i* (avec exposition ν_i), en comparant des approches classiques et profondes.
+**Valeur en entreprise.** La vraie question d'une direction technique n'est pas « le réseau de neurones bat-il le GLM ». C'est « le gain de précision justifie-t-il de présenter un modèle opaque à un régulateur et à un comité tarifaire ». Ce projet traite les deux volets : il compare les performances, et il rend les réseaux interprétables par PDP et ICE, ce qui permet de défendre le modèle devant quelqu'un qui ne fait pas de deep learning.
 
-**Deux axes.**
-1. **Fréquence — GLM Poisson vs Deep NN.** Ajustement d'un GLM Poisson (baseline) et de **quatre réseaux de neurones profonds** de différentes architectures. Interprétation via **Partial Dependence Plots (PDP)** et **Individual Conditional Expectation (ICE)** pour rendre les réseaux « boîte-blanche ».
-2. **Clustering non-supervisé — AE et VAE.** Compression des contrats dans un **espace latent** via **Auto-Encodeurs** (AE) et **Auto-Encodeurs Variationnels** (VAE), puis clustering k-means sur les représentations latentes.
+Le second axe, la compression par auto-encodeurs, sert à segmenter un portefeuille sans a priori. C'est utile pour repérer des sous-populations mal tarifées que la grille actuelle mélange.
 
-**Notes techniques.**
-- Encodage **one-hot** de toutes les variables (57 modalités totales pour AE/VAE, 44 pour GLM/DNN afin d'éviter la multicolinéarité).
-- Traitement de `Valeur_assuree` avec 99,85 % de valeurs manquantes → variable supprimée (imputation statistiquement incohérente).
-- TensorFlow 2.20, Google Colab GPU.
+**Données.** 87 228 contrats de flotte automobile, 22 variables contractuelles, géographiques et comportementales.
 
-### 3. Big Data in Finance
+**Objectif.** Prédire la fréquence de sinistres f_i = N_i / ν_i, avec ν_i l'exposition.
 
-📁 [`04-Big-Data-Finance/`](./04-Big-Data-Finance/) · *Cours LLSMS2138 — Prof. Nathan Lassance (Louvain School of Management)* · *Équipe : Kamga, Agogue De Tetio, Dinock, Thiry*
+**Axe 1, fréquence.** GLM Poisson en référence, puis quatre réseaux profonds d'architectures différentes. Interprétation par Partial Dependence Plots et Individual Conditional Expectation.
 
-**Sujet.** Comparaison d'**allocations d'actifs multivariées** dans un contexte Big Data (grand nombre d'actifs, matrice de covariance mal conditionnée).
+**Axe 2, clustering non supervisé.** Compression des contrats dans un espace latent par auto-encodeurs et auto-encodeurs variationnels, puis k-means sur les représentations latentes.
 
-**Stratégies testées.**
-- **Baselines** — Maximum Sharpe Ratio (MSR), Minimum Variance (MinVar), 1/N (Equal-Weight).
-- **MinVar régularisé** — Portefeuille MinVar avec pénalité **ℓ₂ (Ridge)**, contrôlée par un hyperparamètre γ.
-- **Sélection optimale de γ** — Cross-validation temporelle pour choisir γ hors-échantillon.
-- Analyse *in-sample* vs *out-of-sample* et discussion des trois enseignements principaux + best practices pour l'évaluation out-of-sample.
+**Notes techniques.** Encodage one-hot de toutes les variables : 57 modalités pour les AE et VAE, 44 pour le GLM et les réseaux afin d'éviter la multicolinéarité. La variable `Valeur_assuree` présentait 99,85 % de valeurs manquantes et a été supprimée, toute imputation étant statistiquement indéfendable à ce taux. TensorFlow 2.20 sur GPU Colab.
 
-### 4. Statistical Learning Methods for Insurance
+### 3. Big Data in Finance, allocation d'actifs en grande dimension
 
-📁 [`05-Statistical-Learning-Insurance/`](./05-Statistical-Learning-Insurance/) · *Cours LACTU2310 — Prof. Karim Barigou* · *Projet individuel*
+[`04-Big-Data-Finance/`](./04-Big-Data-Finance/)
+*Cours LLSMS2138, Prof. Nathan Lassance (Louvain School of Management) · Équipe : Kamga, Agogue De Tetio, Dinock, Thiry*
 
-**Contexte.** En 2019, une agence de voyages a proposé à ses ~2 000 clients une **assurance voyage intégrant une couverture Covid-19**. Seuls **36 %** ont souscrit.
+**Valeur en entreprise.** Quand le nombre d'actifs approche la longueur de l'historique, la matrice de covariance estimée devient instable. Les poids optimaux qui en sortent bougent violemment d'une période à l'autre, ce qui se traduit en frais de transaction et en performance out-of-sample décevante. La régularisation Ridge stabilise ces poids, et le choix de l'intensité de pénalisation se fait en validation temporelle et non à l'œil.
 
-**Objectif.** Modèle de **classification binaire** pour prédire la probabilité de souscription future en fonction des caractéristiques sociodémographiques, habitudes de voyage et historique médical — assimilable à un exercice de **claim occurrence modeling**.
+Transposable directement à la gestion d'actifs et à l'allocation stratégique d'un assureur. Le projet insiste aussi sur les bonnes pratiques d'évaluation hors échantillon, ce qui est le point où la plupart des backtests se trompent.
 
-**Méthodologie.**
-- Pré-processing : recodage de `ChronicDiseases` (binaire), `FamilyMembers` (discret).
-- **Régression logistique binomiale** de base (référence : Frees, 2010).
-- **Méthodes ensemblistes** — Random Forest, Gradient Boosting, XGBoost.
-- Évaluation par AUC-ROC, matrice de confusion, calibration.
-- Deux versions du rapport (soutenance 07/2025 puis version révisée 06/2026) + support de présentation.
+**Stratégies comparées.** Maximum Sharpe Ratio, Minimum Variance, équipondération 1/N en référence naïve, puis MinVar régularisé par pénalité ℓ2 avec hyperparamètre γ sélectionné par validation croisée temporelle. Analyse in-sample contre out-of-sample.
 
-### 5. Data Mining
+### 4. Statistical Learning, propension à souscrire une assurance voyage
 
-📁 [`06-Data-Mining/`](./06-Data-Mining/) · *Cours LDATS2350 — Prof. Robin Van Oirbeek* · *Équipe : Daktou Tchagam Martial, Kamga Bopda D.R., Dinock Dinock Y.B.*
+[`05-Statistical-Learning-Insurance/`](./05-Statistical-Learning-Insurance/)
+*Cours LACTU2310, Prof. Karim Barigou · Projet individuel*
 
-**Objectif.** Prédire la survenue d'un accident automobile (`claimNumbMD`) à partir des caractéristiques d'un contrat d'assurance.
+**Valeur en entreprise.** Une agence a proposé en 2019 une assurance voyage avec couverture Covid à environ 2 000 clients. 36 % ont souscrit. Savoir prédire qui souscrira permet de cibler la campagne suivante au lieu de la diffuser à tout le fichier.
 
-**Données.** 24 774 observations, 11 variables décrivant les assurés, véhicules, environnement — aucune valeur manquante.
+La mécanique est identique à celle d'un modèle de résiliation ou de survenance de sinistre : variable binaire, données sociodémographiques et comportementales, arbitrage entre lisibilité et performance. Ce qui est transférable, c'est le pipeline complet, du recodage des variables à l'évaluation par AUC et à la calibration des probabilités prédites.
 
-**Méthodologie.**
-- **Analyse exploratoire** : prétraitement, statistiques descriptives, **détection des valeurs aberrantes**, analyse d'asymétrie/aplatissement, inférence statistique sur la relation avec la cible.
-- **Modélisation** : régression, comparaison de plusieurs modèles prédictifs, identification des facteurs les plus influents.
+**Méthodologie.** Recodage de `ChronicDiseases` en binaire et de `FamilyMembers` en discret, régression logistique binomiale de référence (Frees, 2010), puis Random Forest, Gradient Boosting et XGBoost. Évaluation par AUC-ROC, matrice de confusion et courbe de calibration. Deux versions du rapport (soutenance de juillet 2025, révision de juin 2026) et le support de présentation.
+
+### 5. Data Mining, prédiction de la survenance d'un sinistre auto
+
+[`06-Data-Mining/`](./06-Data-Mining/)
+*Cours LDATS2350, Prof. Robin Van Oirbeek · Équipe : Daktou Tchagam Martial, Kamga Bopda D.R., Dinock Dinock Y.B.*
+
+**Valeur en entreprise.** Une grille tarifaire auto repose sur un petit nombre de variables réellement discriminantes. Le projet part de 11 variables candidates sur 24 774 contrats et hiérarchise leur pouvoir explicatif sur la survenance d'un accident. Le travail de détection des valeurs aberrantes, souvent négligé, conditionne la qualité de tout ce qui suit : un outlier non traité déforme les coefficients et donc le tarif.
+
+Sortie exploitable en tarification et en sélection des risques.
+
+**Données.** 24 774 observations, 11 variables sur les assurés, les véhicules et l'environnement, aucune valeur manquante. Cible : `claimNumbMD`.
+
+**Méthodologie.** Analyse exploratoire avec prétraitement, statistiques descriptives, détection des valeurs aberrantes, analyse d'asymétrie et d'aplatissement, inférence sur la relation à la cible. Puis modélisation par régression et comparaison de plusieurs modèles prédictifs.
 
 ### 6. Financial Valuation of Actuarial Liabilities
 
-📁 [`07-Financial-Valuation-Actuarial-Liabilities/`](./07-Financial-Valuation-Actuarial-Liabilities/) · *Cours LACTU2170 — Prof. Donatien Hainaut* · *Équipe : Kamga Bopda, Dinock Dinock*
+[`07-Financial-Valuation-Actuarial-Liabilities/`](./07-Financial-Valuation-Actuarial-Liabilities/)
+*Cours LACTU2170, Prof. Donatien Hainaut · Équipe : Kamga Bopda, Dinock Dinock*
 
-Ce projet en **deux parties** met en pratique les fondamentaux de la valorisation actuarielle sous incertitude financière et démographique.
+**Valeur en entreprise.** La partie I refait, de bout en bout, ce que le pilier 1 de Solvabilité II exige : construire une courbe de taux à partir des prix de marché, actualiser des flux probabilisés, et mesurer la sensibilité du résultat aux taux par duration modifiée et convexité. C'est le socle de tout provisionnement.
 
-**Partie I — Best Estimate et sensibilité**
-- **Estimation de la courbe zéro-coupon** à partir des obligations souveraines (intérêts courus, Dirty Price, rendements/yields).
-- **Lissage par le modèle de Svensson** (6 paramètres).
-- **Bootstrapping des taux spots**.
-- **Calcul du Best Estimate** (flux actualisés et probabilisés en vie et décès).
-- **Sensibilité** — calcul du yield, de la **duration modifiée**, de la **convexité**.
-- **Résultat** : BE négatif (favorable à l'assureur — marge bénéficiaire), avec discussion des limites liées à l'hypothèse de μ instantanément constant.
+La partie II répond à une question de développement produit : combien coûte réellement la garantie qu'on met dans un contrat en unités de compte ? La prime se décompose en une partie déterministe et une partie optionnelle, et c'est cette seconde composante qui explique pourquoi certains produits à garantie ont ruiné leurs émetteurs. Croiser trois méthodes de pricing et vérifier qu'elles convergent est ce qu'un actuaire fait avant de valider un modèle.
 
-**Partie II — Pricing d'un produit variable annuity**
-- Produit combinant **assurance-vie** (taux de mortalité) et **finance** (fonds risqué + retrait garanti KT).
-- Décomposition de la prime V₀ : partie déterministe *γF₀ Σ ₖ p_x (1−γ)ᵏ* + partie **option-like** *E^Q[(S_T − K_T/A)₊]* .
-- Trois méthodes de pricing comparées : **arbre binomial**, **Monte-Carlo**, et **analyse d'actifs corrélés**.
-- Étude de **convergence** des trois méthodes.
+**Partie I, Best Estimate et sensibilité.** Estimation de la courbe zéro-coupon à partir des obligations souveraines (intérêts courus, dirty price, rendements), lissage par le modèle de Svensson à six paramètres, bootstrapping des taux spots, calcul du Best Estimate sur flux actualisés et probabilisés en vie et en décès, puis yield, duration modifiée et convexité. Le Best Estimate ressort négatif, donc favorable à l'assureur, avec une discussion des limites liées à l'hypothèse d'une intensité de mortalité instantanément constante.
+
+**Partie II, pricing d'une variable annuity.** Produit combinant mortalité et fonds risqué avec retrait garanti K_T. Décomposition de la prime V₀ entre partie déterministe et partie optionnelle E^Q[(S_T − K_T/A)₊]. Trois méthodes comparées : arbre binomial, Monte-Carlo, analyse d'actifs corrélés, avec étude de convergence.
 
 ### 7. Réassurance et échange de risques
 
-📁 [`08-Reassurance/`](./08-Reassurance/) · *Cours Réassurance — Prof. Philippe De Longueville* · *Équipe (Groupe 6) : Diendéré Wend, Bopda Davy Romaric*
+[`08-Reassurance/`](./08-Reassurance/)
+*Cours Réassurance, Prof. Philippe De Longueville · Groupe 6 : Diendéré Wend, Kamga Bopda Davy Romaric*
 
-**Objectif.** Tarifer plusieurs traités de réassurance (couches XL) sur un portefeuille de sinistres réels.
+**Valeur en entreprise.** Deux métiers utilisent exactement ce travail. Le réassureur, pour fixer le prix d'une couche. La cédante, pour savoir si le prix proposé est défendable avant de signer.
 
-**Méthodologie.**
-1. **Préparation des données** : indexation des primes et des sinistres à une date de référence (indice économique), calcul de l'**Incurred Loss** et de l'**Indexed Incurred Loss**.
-2. **Burning Cost** — avec et sans indexation.
-3. **Modèle Poisson-Pareto**
-   - Extrapolation de la fréquence λ_P dans la couche.
-   - Espérance de paiement par sinistre E(Y_P) dans la couche.
-   - Application numérique à deux couches (moyenne et haute).
-   - **Estimation des paramètres** (MLE) et **validation graphique** (QQ-plots, mean excess plot).
-   - Calcul de la **prime pure**.
-4. Comparaison des approches, discussion du choix de la couche et interprétation.
+La difficulté est connue : les couches hautes sont rarement touchées, donc l'historique ne suffit pas à estimer la prime. Le burning cost indexé donne un point de départ, le modèle Poisson-Pareto permet d'extrapoler au-delà de ce qui a été observé. Le projet applique les deux à deux couches, avec validation graphique de l'ajustement Pareto par QQ-plot et mean excess plot, ce qui évite d'extrapoler avec un modèle qui ne colle pas.
 
-### 8. Actuarial Finance : Advanced Processes and Life Insurance Engineering
+**Méthodologie.** Indexation des primes et des sinistres à une date de référence, calcul de l'incurred loss et de l'indexed incurred loss. Burning cost avec et sans indexation. Modèle Poisson-Pareto : extrapolation de la fréquence λ_P dans la couche, espérance de paiement par sinistre E(Y_P), estimation des paramètres par maximum de vraisemblance, validation graphique, calcul de la prime pure. Application à une couche moyenne et une couche haute, puis comparaison des approches.
 
-📁 [`09-Actuarial-Finance-Levy/`](./09-Actuarial-Finance-Levy/) · *Cours LACTU2240 — Prof. Donatien Hainaut* · *Équipe : Daktou Tchagam M., Kamga Bopda D.R.*
+### 8. Actuarial Finance, processus de Lévy et ingénierie de l'assurance vie
 
-**Partie I — Processus de Lévy sur le S&P 500**
-Données : log-rendements journaliers du S&P 500 sur **07/08/2020 – 07/08/2025** (source Investing.com).
+[`09-Actuarial-Finance-Levy/`](./09-Actuarial-Finance-Levy/)
+*Cours LACTU2240, Prof. Donatien Hainaut · Équipe : Daktou Tchagam M., Kamga Bopda D.R.*
 
-Trois processus ajustés :
-1. **Mouvement Brownien avec dérive (BMD)** — méthode des moments.
-2. **Diffusion avec sauts négatifs Gamma** — calibration **Peak Over Threshold (POT)**.
-3. **Processus Normal Inverse Gaussien (NIG)** — méthode des moments.
+**Valeur en entreprise.** Un modèle gaussien ne reproduit ni l'asymétrie ni les queues épaisses des rendements observés. Utilisé pour calculer un capital économique ou pour tarifer une garantie longue, il donne des chiffres trop bas, et l'erreur est d'autant plus grande que l'on regarde loin dans la queue.
 
-Évaluation de la capacité de chaque modèle à reproduire l'**asymétrie et le kurtosis empirique** des log-rendements. Simulations et calibration sous **mesure risque-neutre**.
+Le projet quantifie l'écart en calibrant trois processus sur cinq ans de S&P 500 et en confrontant leur skewness et leur kurtosis théoriques aux valeurs empiriques. La partie GMIB applique ensuite le résultat à un produit réel : le coût d'une garantie de rente minimale dépend directement du modèle de rendement retenu.
 
-**Partie II — Tarification d'un GMIB**
-- Pricing d'un **Guaranteed Minimum Income Benefit** (rente garantie sur produit variable).
-- Étude des **propriétés de V₀(c_min)** en fonction du taux de retrait garanti.
-- Méthode de résolution numérique et analyse de résultats.
+**Partie I, processus de Lévy sur le S&P 500.** Log-rendements journaliers du 7 août 2020 au 7 août 2025 (source Investing.com). Trois processus ajustés : mouvement brownien avec dérive par méthode des moments, diffusion avec sauts négatifs Gamma calibrée par Peak Over Threshold, processus Normal Inverse Gaussien par méthode des moments. Évaluation de la capacité de chacun à reproduire l'asymétrie et le kurtosis empiriques, puis simulation sous mesure risque-neutre.
 
-### 9. Quantitative Risk Management (QRM)
+**Partie II, tarification d'un GMIB.** Pricing d'un Guaranteed Minimum Income Benefit, étude des propriétés de V₀(c_min) en fonction du taux de retrait garanti, résolution numérique et analyse des résultats.
 
-📁 [`10-QRM-Quantitative-Risk-Management/`](./10-QRM-Quantitative-Risk-Management/) · *Projet en R* · *Équipe : Kamga Bopda D.R., Mafeulo Tavinia*
+### 9. Quantitative Risk Management
 
-Analyse quantitative des risques sur un portefeuille d'actions (dont Caterpillar `CAT`) via modèles **GARCH** :
+[`10-QRM-Quantitative-Risk-Management/`](./10-QRM-Quantitative-Risk-Management/)
+*Cours LACTU2210, Prof. Christian Hafner · Équipe : Kamga Bopda D.R., Mafeulo Tavinia*
 
-- Traitement de la série temporelle (`xts`, `TTR`), tests de normalité (`nortest`, `tseries`).
-- Statistiques d'ordre supérieur (asymétrie, kurtosis) via `moments`.
-- **Modèles GARCH univariés** (`rugarch`, `fGarch`) : GARCH(1,1), GJR-GARCH, EGARCH.
-- Tests de spécification (**ARCH-LM**, autocorrélation des résidus) via `FinTS`, `lmtest`.
-- Estimation de mesures de risque (Value-at-Risk, Expected Shortfall) sur horizon glissant.
+**Valeur en entreprise.** Ce projet produit un résultat qu'une direction des risques devrait vouloir connaître : la VaR à 1 % calculée sous hypothèse gaussienne à partir d'un BEKK bivarié est dépassée **1,73 % des jours** au lieu de 1 %. Elle sous-estime le risque, et un backtesting réglementaire la rejetterait.
 
-> *Note : le rapport final PDF associé n'était pas disponible au moment de la mise en ligne du dépôt ; le code R est fourni tel quel avec les commentaires méthodologiques.*
+La cause est identifiée dans la seconde partie. La dépendance entre CAT et le S&P 500 est bien décrite par une t-copule à **ν = 6,17** degrés de liberté, dont le coefficient de dépendance de queue gauche vaut **λ_L = 0,2777**. Une copule gaussienne aurait donné zéro, c'est-à-dire l'affirmation que deux actifs ne s'effondrent jamais ensemble à la limite. C'est l'hypothèse qui a fait tant de dégâts sur les portefeuilles structurés en 2007-2008.
+
+Applications : backtesting de VaR et d'Expected Shortfall, module de risque de marché sous Solvabilité II, choix de la structure de dépendance dans un modèle interne d'agrégation.
+
+**Projet I, volatilité univariée.** GARCH(1,1), GJR-GARCH et EGARCH sur `rugarch` et `fGarch`, tests de normalité de Jarque-Bera et Anderson-Darling, validation par ARCH-LM et Ljung-Box, calcul de VaR et d'Expected Shortfall conditionnelles.
+
+**Projet II, dépendance bivariée.** BEKK(1,1) sur CAT et S&P 500 (5 075 observations depuis 2000), extraction de la corrélation conditionnelle, VaR d'un portefeuille équipondéré et comptage des excédences. Puis standardisation des résidus, passage aux pseudo-observations et ajustement de cinq copules (gaussienne, Student-t, Clayton, Gumbel, Frank) par maximum de vraisemblance et par inversion du tau de Kendall. Estimation empirique de la dépendance de queue à gauche aux seuils de 5 % et 1 %.
+
+Le détail des résultats est dans le [README du projet](./10-QRM-Quantitative-Risk-Management/README.md).
 
 ---
 
 ## Reproductibilité
 
-### Environnement Python
+### Python
 
-Les notebooks ont été développés majoritairement sur **Google Colab** (Python 3.10-3.12). Pour reproduire localement :
+Les notebooks ont été développés sur Google Colab (Python 3.10 à 3.12).
 
 ```bash
-# Créer un environnement virtuel
 python3 -m venv .venv
-source .venv/bin/activate   # ou .venv\Scripts\activate sous Windows
+source .venv/bin/activate          # .venv\Scripts\activate sous Windows
 
-# Dépendances principales (à adapter selon le projet)
 pip install numpy pandas scipy scikit-learn matplotlib seaborn statsmodels
 pip install tensorflow==2.20.0 keras
 pip install pandas_datareader yfinance
 pip install jupyter notebook
 ```
 
-### Environnement R
+### R
 
 ```r
 install.packages(c(
   "xts", "TTR", "moments", "nortest", "tseries",
   "rugarch", "fGarch", "lmtest", "FinTS",
-  "tidyverse", "tidymodels"
+  "BEKKs", "rmgarch", "copula", "matrixcalc",
+  "tidyverse", "tidymodels", "ggplot2", "gridExtra"
 ))
 ```
 
-### Excel / VBA
+### Excel et VBA
 
-Les fichiers `.xlsm` (macros) sont ouvrables avec **Microsoft Excel 2016 ou ultérieur**. Activer les macros à l'ouverture pour reproduire les simulations ALM déterministes.
+Les fichiers `.xlsm` s'ouvrent avec Excel 2016 ou une version ultérieure. Il faut activer les macros pour relancer les simulations ALM déterministes.
+
+Une remarque valable pour plusieurs projets : les chemins d'accès aux données sont codés en dur en tête de script et doivent être adaptés. Certains jeux de données ne sont pas redistribués ici, pour des raisons de propriété.
+
+---
 
 ## Contact
 
 **KAMGA BOPDA Davy Romaric**
-Étudiant en Master en Sciences Actuarielles — UCLouvain (ISBA)
-📧 kamgabopda@gmail.com
-🔗 [GitHub — @kamga98davy](https://github.com/kamga98davy)
+Étudiant en Master en Sciences Actuarielles, UCLouvain (ISBA)
+
+kamgabopda@gmail.com · [github.com/kamga98davy](https://github.com/kamga98davy)
 
 ---
 
-<sub>© 2024-2026 — KAMGA BOPDA Davy Romaric · Ces travaux sont mis à disposition à des fins pédagogiques et de portfolio. Toute réutilisation académique doit citer l'auteur et l'UCLouvain. Les données de certains projets restent la propriété de leurs détenteurs (UCLouvain, partenaires industriels).</sub>
+<sub>© 2024-2026 KAMGA BOPDA Davy Romaric. Travaux mis à disposition à des fins pédagogiques et de portfolio. Toute réutilisation académique doit citer l'auteur et l'UCLouvain. Les données de certains projets restent la propriété de leurs détenteurs.</sub>
