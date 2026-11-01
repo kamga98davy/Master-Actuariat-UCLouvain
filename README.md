@@ -302,3 +302,12 @@ kamgabopda@gmail.com · [github.com/kamga98davy](https://github.com/kamga98davy)
 ---
 
 <sub>© 2024-2026 KAMGA BOPDA Davy Romaric. Travaux mis à disposition à des fins pédagogiques et de portfolio. Toute réutilisation académique doit citer l'auteur et l'UCLouvain. Les données de certains projets restent la propriété de leurs détenteurs.</sub>
+
+
+## Licences
+
+- Code source : MIT — voir [LICENSE](LICENSE).
+- Mémoire et rapports personnels : CC BY 4.0 —
+  voir [LICENSE-DOCS.md](LICENSE-DOCS.md).
+- Données externes et travaux collectifs :
+  droits de leurs auteurs respectifs.
